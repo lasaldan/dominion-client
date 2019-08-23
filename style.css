@@ -365,13 +365,13 @@ body.game #game {
 
 #myDrawDeck {
   position: relative;
-  width: 200px;
+  width: 170px;
   flex: none;
 
 }
 #myDrawDeck > div {
-  width: 200px;
-  height: 307px;
+  width: 170px;
+  height: 261px;
   background-image: url("images/Card_Back.jpg");
   background-position: center center;
   background-size: cover;
@@ -386,7 +386,7 @@ body.game #game {
 }
 #myDiscardDeck {
   flex: none;
-  width: 200px;
+  width: 170px;
 }
 #myHand {
   flex: 1;
@@ -430,13 +430,13 @@ body.game #game {
 
 #topDrawDeck {
   position: relative;
-  width: 200px;
+  width: 170px;
   flex: none;
 
 }
 #topDrawDeck > div {
-  width: 200px;
-  height: 307px;
+  width: 170px;
+  height: 261px;
   background-image: url("images/Card_Back.jpg");
   background-position: center center;
   background-size: cover;
@@ -451,7 +451,7 @@ body.game #game {
 }
 #topDiscardDeck {
   flex: none;
-  width: 200px;
+  width: 170px;
 }
 #topHand {
   flex: 1;
@@ -480,15 +480,15 @@ body.game #game {
 }
 #leftDrawDeck {
   position: relative;
-  width: 200px;
+  width: 170px;
   flex: none;
   transform: rotate(90deg);
-  height: 200px;
+  height: 170px;
   left: -100px;
 }
 #leftDrawDeck > div {
-  width: 200px;
-  height: 307px;
+  width: 170px;
+  height: 261px;
   background-image: url("images/Card_Back.jpg");
   background-position: center center;
   background-size: cover;
@@ -503,8 +503,8 @@ body.game #game {
 }
 #leftDiscardDeck {
   flex: none;
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   left: -100px;
   transform: rotate(90deg);
   position: relative;
@@ -538,15 +538,15 @@ body.game #game {
 }
 #rightDrawDeck {
   position: relative;
-  width: 200px;
+  width: 170px;
   flex: none;
   transform: rotate(-90deg);
-  height: 200px;
+  height: 170px;
   left: 0px;
 }
 #rightDrawDeck > div {
-  width: 200px;
-  height: 307px;
+  width: 170px;
+  height: 261px;
   background-image: url("images/Card_Back.jpg");
   background-position: center center;
   background-size: cover;
@@ -561,8 +561,8 @@ body.game #game {
 }
 #rightDiscardDeck {
   flex: none;
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   left: 0px;
   transform: rotate(-90deg);
   position: relative;

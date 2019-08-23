@@ -97,6 +97,11 @@ var GameDOM = function() {
       document.getElementById("leftPlayer").dataset.playerId = left.playerUid
       if(currentPlayer && currentPlayer.playerUid == left.playerUid)
         document.getElementById("leftPlayer").classList.add("current")
+
+      document.getElementById("leftDiscardDeck").className = ""
+      if(left.discardDeck)
+        document.getElementById("leftDiscardDeck").className = (left.discardDeck.id)
+
     }
     if(game.gameState.players.length >= 3) {
       var top = game.gameState.players[(game.gameState.players.indexOf(me) + 2) % game.gameState.players.length]
@@ -113,6 +118,11 @@ var GameDOM = function() {
       document.getElementById("topPlayer").dataset.playerId = top.playerUid
       if(currentPlayer && currentPlayer.playerUid == top.playerUid)
         document.getElementById("topPlayer").classList.add("current")
+
+      document.getElementById("topDiscardDeck").className = ""
+      if(top.discardDeck)
+        document.getElementById("topDiscardDeck").className = (top.discardDeck.id)
+
     }
     if(game.gameState.players.length >= 4) {
       var right = game.gameState.players[(game.gameState.players.indexOf(me) + 3) % game.gameState.players.length]
@@ -129,6 +139,10 @@ var GameDOM = function() {
       document.getElementById("rightPlayer").dataset.playerId = right.playerUid
       if(currentPlayer && currentPlayer.playerUid == right.playerUid)
         document.getElementById("rightPlayer").classList.add("current")
+
+      document.getElementById("rightDiscardDeck").className = ""
+      if(right.discardDeck)
+        document.getElementById("rightDiscardDeck").className = (right.discardDeck.id)
     }
 
     // Rebuild Chat Window
@@ -140,6 +154,10 @@ var GameDOM = function() {
       document.getElementById("messages").appendChild( el )
     })
     this.scrollToBottom(document.getElementById("messages"))
+
+    document.getElementById("myDiscardDeck").className = ""
+    if(me.discardDeck)
+      document.getElementById("myDiscardDeck").className = (me.discardDeck.id)
 
     // Update Stats
     document.getElementById("buys").innerHTML = me.buysRemaining
