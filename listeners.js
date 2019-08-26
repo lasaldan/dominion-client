@@ -67,6 +67,11 @@ document.getElementById("endTurn").addEventListener("click", function(e) {
   server.endTurn( )
 })
 
+document.getElementById("buysEndTurn").addEventListener("click", function(e) {
+  document.getElementById("game").classList.remove("market");
+  server.endTurn( )
+})
+
 document.getElementById("playAllTreasure").addEventListener("click", function(e) {
   server.playAllTreasure( localStorage.getItem("dominion_gameId") )
 })
@@ -84,9 +89,33 @@ document.getElementById("myHand").addEventListener("click", function(e) {
 })
 
 document.getElementById("market").addEventListener("click", function(e) {
-  document.querySelectorAll(".selected-market-card")[0].className.remove("selected-market-card")
-  var card = e.target.closest("#market > div:not(.preview) > div")
-  document.querySelector("#completePurchase span").innerHTML = card.dataset.name
-  card.className.add("selected-market-card")
-  console.log(card.dataset.name)
+  document.querySelectorAll(".selected-market-card").forEach(function(e) {
+    e.classList.remove("selected-market-card")
+  })
+  var card = e.target.closest("#market > div:not(#preview) > div")
+  if(card) {
+    var name = card.dataset.name
+    card.classList.remove("selected-market-card")
+    cardId = card.className
+    card.classList.add("selected-market-card")
+    document.querySelector("#completePurchase span").innerHTML = (name ? name : "")
+    document.getElementById("completePurchase").classList.remove("disabled")
+    document.getElementById("previewCard").innerHTML = "<div class='"+cardId+"'></div>"
+  }
+  else {
+    document.getElementById("completePurchase").classList.add("disabled")
+    document.getElementById("previewCard").innerHTML = "<div class='card_back'></div>"
+    document.querySelector("#completePurchase span").innerHTML = ""
+  }
+})
+
+document.getElementById("completePurchase").addEventListener("click", function(e) {
+  if(e.target.classList.contains("disabled")) return
+  var card = document.querySelector(".selected-market-card")
+  card.classList.remove("selected-market-card")
+  server.buyCard(card.className)
+})
+
+document.getElementById("closeMarket").addEventListener("click", function(e) {
+  document.getElementById("game").classList.remove("market");
 })

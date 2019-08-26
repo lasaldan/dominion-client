@@ -114,7 +114,7 @@ body > div.card {
   top: 40px;
   bottom: 40px;
   background-color: rgba(255,255,255,.5);
-  background-color: rgba(0,0,0,.7);
+  background-color: rgba(0,0,0,.8);
   border: 1px solid white;
   border-radius: 20px;
   z-index: 8;
@@ -126,6 +126,10 @@ body > div.card {
     ". estate duchy province . preview"
     "k0 k1 k2 k3 k4 preview"
     "k5 k6 k7 k8 k9 preview";
+}
+#market #completePurchase.disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }
 #market #completePurchase span {
   color: black;
@@ -185,7 +189,7 @@ body > div.card {
   margin: 5px;
 }
 
-#market [class^="card_"] {
+#market > div:not(#preview) [class^="card_"] {
   width: auto;
   height: calc(100% - 30px);
   border-radius: 16px;
@@ -195,6 +199,13 @@ body > div.card {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  cursor: pointer;
+}
+#market > div:not(#preview) .selected-market-card[class^="card_"] {
+  border: 10px solid white;
+}
+#previewCard div {
+  margin: 0 auto;
 }
 body.game #game {
   display: grid;
@@ -256,7 +267,7 @@ body.game #game {
   margin: 5px;
   display: flex;
 }
-#gold, #actions, #buys {
+#gold, #buysGoldRemaining, #actions, #buys {
   color: white;
   text-shadow: 0 0 3px black;
   font-size: 36px;
@@ -266,14 +277,14 @@ body.game #game {
   width: 80px;
   max-height: 80px;
 }
-#gold {
+#gold, #buysGoldRemaining {
   position: relative;
   background-image: url("images/coin.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
-#gold:after {
+#gold:after, #buysGoldRemaining:after {
   content: "Treasure";
   color: white;
   position: absolute;
@@ -282,6 +293,11 @@ body.game #game {
   right: 0;
   text-align: center;
   font-size: 14px;
+}
+
+#buysGoldRemaining {
+  position: relative;
+  height: 80px;
 }
 
 #gold + div, #buys + div {
@@ -703,6 +719,9 @@ body.game #game {
   background-size: cover;
   border: 10px solid black;
   padding: 5px;
+}
+.card_back {
+  background-image: url("images/Card_Back.jpg");
 }
 .card_copper {
   background-image: url("images/Copper.jpg");

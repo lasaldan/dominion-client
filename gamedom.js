@@ -162,13 +162,14 @@ var GameDOM = function() {
       document.getElementById("myDiscardDeck").className = (me.discardDeck.id)
 
     game.gameState.market.forEach(function(card, i) {
-      document.getElementById("buyk" + i).innerHTML = "<div data-name='"+card.name+"'class='"+card.id+"'></div>"
+      document.getElementById("buyk" + i).innerHTML = "<div data-cost="+card.cost+" data-name='"+card.name+"'class='"+card.id+"'></div>"
     })
 
     // Update Stats
     document.getElementById("buys").innerHTML = me.buysRemaining
     document.getElementById("actions").innerHTML = me.actionsRemaining
     document.getElementById("gold").innerHTML = me.goldRemaining
+    document.getElementById("buysGoldRemaining").innerHTML = me.goldRemaining
     document.getElementById("goldInHand").innerHTML = me.hand.map(c => c.value).filter(c => c).reduce((a,b) => a + b, 0)
 
     document.getElementById("userName").innerHTML = localStorage.getItem("dominion_username")
