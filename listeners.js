@@ -67,10 +67,26 @@ document.getElementById("endTurn").addEventListener("click", function(e) {
   server.endTurn( )
 })
 
+document.getElementById("playAllTreasure").addEventListener("click", function(e) {
+  server.playAllTreasure( localStorage.getItem("dominion_gameId") )
+})
+
+document.getElementById("marketTrigger").addEventListener("click", function(e) {
+  document.getElementById("game").classList.add("market");
+})
+
 document.getElementById("myHand").addEventListener("click", function(e) {
   var isPlayButton = e.target.closest("#myHand > div > div")
   if(isPlayButton) {
     var card = e.target.closest("#myHand > div")
     server.playCard(card.className)
   }
+})
+
+document.getElementById("market").addEventListener("click", function(e) {
+  document.querySelectorAll(".selected-market-card")[0].className.remove("selected-market-card")
+  var card = e.target.closest("#market > div:not(.preview) > div")
+  document.querySelector("#completePurchase span").innerHTML = card.dataset.name
+  card.className.add("selected-market-card")
+  console.log(card.dataset.name)
 })

@@ -48,7 +48,7 @@ input {
 #gameList {
 }
 
-body > div, body #game {
+body > div, body #game, #game #market {
   display: none
 }
 
@@ -73,6 +73,9 @@ body > div.card {
 }
 #games > div, #gameHeaders > div {
   display: flex;
+}
+#game.market #market {
+  display: grid;
 }
 #games > div > span, #gameHeaders > div > span {
   flex: 1;
@@ -102,6 +105,96 @@ body > div.card {
 }
 .hidden {
   display: none
+}
+#market {
+  box-shadow: 0 0 30px black;
+  position: fixed;
+  left: 40px;
+  right: 40px;
+  top: 40px;
+  bottom: 40px;
+  background-color: rgba(255,255,255,.5);
+  background-color: rgba(0,0,0,.7);
+  border: 1px solid white;
+  border-radius: 20px;
+  z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 250px;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ". copper silver gold . preview"
+    ". estate duchy province . preview"
+    "k0 k1 k2 k3 k4 preview"
+    "k5 k6 k7 k8 k9 preview";
+}
+#market #completePurchase span {
+  color: black;
+}
+#market #buyCopper {
+  grid-area: copper;
+}
+#market #buySilver {
+  grid-area: silver;
+}
+#market #buyGold {
+  grid-area: gold;
+}
+#market #buyEstate {
+  grid-area: estate;
+}
+#market #buyDuchy {
+  grid-area: duchy;
+}
+#market #buyProvince {
+  grid-area: province;
+}
+#market #buyk0 {
+  grid-area: k0
+}
+#market #buyk1 {
+  grid-area: k1
+}
+#market #buyk2 {
+  grid-area: k2
+}
+#market #buyk3 {
+  grid-area: k3
+}
+#market #buyk4 {
+  grid-area: k4
+}
+#market #buyk5 {
+  grid-area: k5
+}
+#market #buyk6 {
+  grid-area: k6
+}
+#market #buyk7 {
+  grid-area: k7
+}
+#market #buyk8 {
+  grid-area: k8
+}
+#market #buyk9 {
+  grid-area: k9
+}
+#preview {
+  grid-area: preview
+}
+#market > div {
+  margin: 5px;
+}
+
+#market [class^="card_"] {
+  width: auto;
+  height: calc(100% - 30px);
+  border-radius: 16px;
+  background-size: cover;
+  border: 10px solid black;
+  padding: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 body.game #game {
   display: grid;
@@ -255,7 +348,7 @@ body.game #game {
   width: auto;
   margin-top: 10px;
 }
-#market {
+#marketTrigger {
   width: auto;
   margin-top: 10px;
 }
@@ -614,11 +707,54 @@ body.game #game {
 .card_copper {
   background-image: url("images/Copper.jpg");
 }
+.card_silver{
+  background-image: url("images/Silver.jpg");
+}
+.card_gold{
+  background-image: url("images/Gold.jpg");
+}
 .card_estate {
   background-image: url("images/Estate.jpg");
 }
+.card_duchy {
+  background-image: url("images/Duchy.jpg");
+}
+.card_province {
+  background-image: url("images/Province.jpg");
+}
 .card_blank {
   background-image: url("images/Blank.jpg");
+}
+
+.card_council_room {
+  background-image: url("images/Council_Room.jpg");
+}
+.card_festival {
+  background-image: url("images/Festival.jpg");
+}
+.card_gardens {
+  background-image: url("images/Gardens.jpg");
+}
+.card_laboratory {
+  background-image: url("images/Laboratory.jpg");
+}
+.card_market {
+  background-image: url("images/Market.jpg");
+}
+.card_mine {
+  background-image: url("images/Mine.jpg");
+}
+.card_smithy {
+  background-image: url("images/Smithy.jpg");
+}
+.card_village {
+  background-image: url("images/Village.jpg");
+}
+.card_woodcutter {
+  background-image: url("images/Woodcutter.jpg");
+}
+.card_workshop {
+  background-image: url("images/Workshop.jpg");
 }
 
 

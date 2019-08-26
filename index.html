@@ -66,7 +66,7 @@
               <div id="buys">0</div>
               <div>
                 <div id="marketMessage" data-after="Spend Your Gold!"></div>
-                <div id="market" class="button">View Market</div>
+                <div id="marketTrigger" class="button">View Market</div>
               </div>
             </div>
             <div>
@@ -115,8 +115,37 @@
           <p>When everyone is here and ready to go, click the button below.</p>
           <div class="button">Start Game!</div>
         </div>
+        <div id="gameMessage"></div>
       </div>
 
+      <div id="market">
+        <div id="buyCopper"><div data-name="Copper" class="card_copper"></div></div>
+        <div id="buySilver"><div data-name="Silver" class="card_silver"></div></div>
+        <div id="buyGold"><div data-name="Gold" class="card_gold"></div></div>
+
+        <div id="buyEstate"><div data-name="Estate" class="card_estate"></div></div>
+        <div id="buyDuchy"><div data-name="Duchy" class="card_duchy"></div></div>
+        <div id="buyProvince"><div data-name="Province" class="card_province"></div></div>
+
+        <div id="buyk0"><div class="card_estate"></div></div>
+        <div id="buyk1"><div class="card_estate"></div></div>
+        <div id="buyk2"><div class="card_estate"></div></div>
+        <div id="buyk3"><div class="card_estate"></div></div>
+        <div id="buyk4"><div class="card_estate"></div></div>
+        <div id="buyk5"><div class="card_estate"></div></div>
+        <div id="buyk6"><div class="card_estate"></div></div>
+        <div id="buyk7"><div class="card_estate"></div></div>
+        <div id="buyk8"><div class="card_estate"></div></div>
+        <div id="buyk9"><div class="card_estate"></div></div>
+
+        <div id="preview">
+          <div id="previewCard"></div>
+          <div id="completePurchase" class="button">
+            Buy 1 <span>{cardName}</span> Card
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <script src="listeners.js"></script>

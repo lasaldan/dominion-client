@@ -51,6 +51,10 @@ var Server = function(options) {
     localStorage.setItem("dominion_gameId", gameId)
   }
 
+  this.playAllTreasure = function(gameId) {
+    this.socket.emit("playAllTreasure", gameId)
+  }
+
   this.leaveGame = function(gameId) {
     this.socket.emit('leaveGame', gameId)
     localStorage.removeItem("dominion_gameId")

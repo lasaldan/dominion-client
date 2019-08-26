@@ -81,6 +81,8 @@ var GameDOM = function() {
         document.getElementById("player").classList.add("current")
         document.body.classList.add("myTurn")
       }
+
+      // document.getElementById("gameMessage").innerHTML = me.playedCards.
     }
     if(game.gameState.players.length >= 2) {
       var left = game.gameState.players[(game.gameState.players.indexOf(me) + 1) % game.gameState.players.length]
@@ -158,6 +160,10 @@ var GameDOM = function() {
     document.getElementById("myDiscardDeck").className = ""
     if(me.discardDeck)
       document.getElementById("myDiscardDeck").className = (me.discardDeck.id)
+
+    game.gameState.market.forEach(function(card, i) {
+      document.getElementById("buyk" + i).innerHTML = "<div data-name='"+card.name+"'class='"+card.id+"'></div>"
+    })
 
     // Update Stats
     document.getElementById("buys").innerHTML = me.buysRemaining
