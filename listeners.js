@@ -101,6 +101,7 @@ document.getElementById("market").addEventListener("click", function(e) {
     document.querySelector("#completePurchase span").innerHTML = (name ? name : "")
     document.getElementById("completePurchase").classList.remove("disabled")
     document.getElementById("previewCard").innerHTML = "<div class='"+cardId+"'></div>"
+    document.getElementById("purchaseError").innerHTML = ""
   }
   else {
     document.getElementById("completePurchase").classList.add("disabled")
@@ -111,9 +112,20 @@ document.getElementById("market").addEventListener("click", function(e) {
 
 document.getElementById("completePurchase").addEventListener("click", function(e) {
   if(e.target.classList.contains("disabled")) return
+  var gold = parseInt(document.querySelector("#gold").innerText)
+  var buys = parseInt(document.querySelector("#buys").innerText)
   var card = document.querySelector(".selected-market-card")
+  var cost = parseInt(card.dataset.cost)
   card.classList.remove("selected-market-card")
-  server.buyCard(card.className)
+  if(cost > gold) {
+    document.getElementById("purchaseError").innerHTML = "<p>Not enough gold!</p>"
+  }
+  else if( buys <= 0 ) {
+    document.getElementById("purchaseError").innerHTML = "<p>Not enough Buys left!</p>"
+  }
+  else {
+    server.buyCard(card.className)
+  }
 })
 
 document.getElementById("closeMarket").addEventListener("click", function(e) {

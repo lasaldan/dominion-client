@@ -46,6 +46,7 @@ var GameDOM = function() {
     document.getElementById("game").className = game.gameState.state
 
     var currentPlayer = game.gameState.players.find(a => a.playerUid == game.gameState.currentPlayerId)
+    var board = document.getElementById("gameboard")
     var me = game.gameState.players.find(a => a.me)
     document.getElementById("myDrawDeck").innerHTML = ""
     document.getElementById("myHand").innerHTML = ""
@@ -63,6 +64,10 @@ var GameDOM = function() {
     document.querySelectorAll("[data-player-id]").forEach(d => d.classList.remove("current"));
     document.body.classList.remove("myTurn")
 
+    document.querySelectorAll("#gameboard [class^='card_']").forEach(function(e) {
+      e.remove()
+    })
+
     for(var i = 0; i < me.drawDeck; i++) {
       var card = document.createElement("div")
       document.getElementById("myDrawDeck").appendChild(card)
@@ -76,14 +81,32 @@ var GameDOM = function() {
         card.appendChild( button )
       }
       document.getElementById("myHand").appendChild(card)
-      document.getElementById("player").dataset.playerId = me.playerUid
-      if(currentPlayer && currentPlayer.playerUid == me.playerUid) {
-        document.getElementById("player").classList.add("current")
-        document.body.classList.add("myTurn")
-      }
-
-      // document.getElementById("gameMessage").innerHTML = me.playedCards.
     }
+    document.getElementById("player").dataset.playerId = me.playerUid
+    if(currentPlayer && currentPlayer.playerUid == me.playerUid) {
+      document.getElementById("player").classList.add("current")
+      document.body.classList.add("myTurn")
+    }
+    me.playedCards.forEach(function(cardData, i) {
+      var card = document.createElement("div")
+      card.classList.add(cardData.id)
+      card.tabIndex = -1;
+      card.style.left = "" + i*(100/me.playedCards.length) + "%"
+      card.style.position = "absolute"
+      card.style.top = "0"
+      board.appendChild(card)
+    })
+    me.boughtCards.forEach(function(cardData, i) {
+      var card = document.createElement("div")
+      card.classList.add(cardData.id)
+      card.tabIndex = -1;
+      card.style.right = "" + i*(100/me.boughtCards.length) + "%"
+      card.style.position = "absolute"
+      card.style.bottom = "0"
+      board.appendChild(card)
+    })
+
+
     if(game.gameState.players.length >= 2) {
       var left = game.gameState.players[(game.gameState.players.indexOf(me) + 1) % game.gameState.players.length]
       for(var i = 0; i < left.drawDeck; i++) {
@@ -166,6 +189,7 @@ var GameDOM = function() {
     })
 
     // Update Stats
+    document.getElementById("buysRemaining").innerHTML = me.buysRemaining
     document.getElementById("buys").innerHTML = me.buysRemaining
     document.getElementById("actions").innerHTML = me.actionsRemaining
     document.getElementById("gold").innerHTML = me.goldRemaining

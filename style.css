@@ -206,6 +206,7 @@ body > div.card {
 }
 #previewCard div {
   margin: 0 auto;
+  box-shadow: 0 0 10px white;
 }
 body.game #game {
   display: grid;
@@ -267,7 +268,10 @@ body.game #game {
   margin: 5px;
   display: flex;
 }
-#gold, #buysGoldRemaining, #actions, #buys {
+#buyStats {
+  display: flex;
+}
+#gold, #buysGoldRemaining, #actions, #buys, #buysRemaining {
   color: white;
   text-shadow: 0 0 3px black;
   font-size: 36px;
@@ -298,6 +302,16 @@ body.game #game {
 #buysGoldRemaining {
   position: relative;
   height: 80px;
+  margin: 30px 20px;
+}
+#buysRemaining {
+  height: 80px;
+  display: flex;
+  margin: 30px 20px;
+  width: 80px;
+}
+#purchaseError {
+  text-align: center;
 }
 
 #gold + div, #buys + div {
@@ -323,14 +337,14 @@ body.game #game {
   text-align: center;
   font-size: 14px;
 }
-#buys {
+#buys, #buysRemaining {
   position: relative;
   background-image: url("images/buys.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
-#buys:after {
+#buys:after, #buysRemaining:after {
   content: "Buys";
   color: white;
   position: absolute;
@@ -437,6 +451,8 @@ body.game #game {
 
 #game #gameboard {
   grid-area: game;
+  position: relative;
+  margin: 80px;
 }
 
 #game #player {

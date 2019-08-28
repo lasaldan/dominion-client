@@ -119,13 +119,13 @@
       </div>
 
       <div id="market">
-        <div id="buyCopper"><div data-name="Copper" class="card_copper"></div></div>
-        <div id="buySilver"><div data-name="Silver" class="card_silver"></div></div>
-        <div id="buyGold"><div data-name="Gold" class="card_gold"></div></div>
+        <div id="buyCopper"><div data-cost="0" data-name="Copper" class="card_copper"></div></div>
+        <div id="buySilver"><div data-cost="3" data-name="Silver" class="card_silver"></div></div>
+        <div id="buyGold"><div data-cost="6" data-name="Gold" class="card_gold"></div></div>
 
-        <div id="buyEstate"><div data-name="Estate" class="card_estate"></div></div>
-        <div id="buyDuchy"><div data-name="Duchy" class="card_duchy"></div></div>
-        <div id="buyProvince"><div data-name="Province" class="card_province"></div></div>
+        <div id="buyEstate"><div data-cost="2" data-name="Estate" class="card_estate"></div></div>
+        <div id="buyDuchy"><div data-cost="5" data-name="Duchy" class="card_duchy"></div></div>
+        <div id="buyProvince"><div data-cost="8" data-name="Province" class="card_province"></div></div>
 
         <div id="buyk0"><div class="card_estate"></div></div>
         <div id="buyk1"><div class="card_estate"></div></div>
@@ -139,13 +139,17 @@
         <div id="buyk9"><div class="card_estate"></div></div>
 
         <div id="preview">
+          <div id="buyStats">
+            <div id="buysGoldRemaining"></div>
+            <div id="buysRemaining"></div>
+          </div>
           <div id="previewCard"><div class='card_back'></div></div>
+          <div id="purchaseError"></div>
           <div id="completePurchase" class="button disabled">
             Buy 1 <span></span> Card
           </div>
           <div id="closeMarket" class="button">Close Market</div>
           <div id="buysEndTurn" class="button">End Turn</div>
-          <div id="buysGoldRemaining">
         </div>
 
       </div>
