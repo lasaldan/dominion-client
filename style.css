@@ -203,6 +203,18 @@ body > div.card {
 }
 #market > div:not(#preview) .selected-market-card[class^="card_"] {
   border: 10px solid white;
+  position: relative;
+}
+#market > div:not(#preview) .selected-market-card[class^="card_"]:after {
+  content: attr(data-remaining) " Remaining";
+  text-shadow: 0 0 2px black;
+  font-size: 12px;
+  position: absolute;
+  color: white;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 #previewCard div {
   margin: 0 auto;
@@ -364,10 +376,7 @@ body.game #game {
   flex: none;
   height: auto;
 }
-#stats > div:nth-child(3) {
-  justify-content: space-between;
-}
-#stats > div:first-child {
+#stats > div:nth-child(3), div:nth-child(2) {
   justify-content: space-between;
 }
 #goldInHand:after, #marketMessage:after {

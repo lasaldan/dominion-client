@@ -63,6 +63,7 @@ var GameDOM = function() {
 
     document.querySelectorAll("[data-player-id]").forEach(d => d.classList.remove("current"));
     document.body.classList.remove("myTurn")
+    var playedCardRotation = [2, -1, 3, 0, 1, -2, -3, 1, -2, 0, 2, -1, 2, 3, 0]
 
     document.querySelectorAll("#gameboard [class^='card_']").forEach(function(e) {
       e.remove()
@@ -93,7 +94,8 @@ var GameDOM = function() {
       card.tabIndex = -1;
       card.style.left = "" + i*(100/me.playedCards.length) + "%"
       card.style.position = "absolute"
-      card.style.top = "0"
+      card.style.top = playedCardRotation[i]*3+ "px"
+      card.style.transform = "rotate("+playedCardRotation[i]+"deg)"
       board.appendChild(card)
     })
     me.boughtCards.forEach(function(cardData, i) {
@@ -185,7 +187,11 @@ var GameDOM = function() {
       document.getElementById("myDiscardDeck").className = (me.discardDeck.id)
 
     game.gameState.market.forEach(function(card, i) {
-      document.getElementById("buyk" + i).innerHTML = "<div data-cost="+card.cost+" data-name='"+card.name+"'class='"+card.id+"'></div>"
+      document.getElementById("buyk" + i).innerHTML = "<div data-remaining="+card.quantity+" data-cost="+card.cost+" data-name='"+card.name+"' class='"+((card.quantity > 0) ? card.id : '')+"'></div>"
+    })
+    // var standardCards = ["card_copper", "card_silver", "card_gold", "card_estate", "card_duchy", "card_province"]
+    game.gameState.standardCards.forEach(function(card, i) {
+      document.getElementById("buy" + card.name).innerHTML = "<div data-remaining="+card.quantity+" data-cost="+card.cost+" data-name='"+card.name+"'class='"+card.id+"'></div>"
     })
 
     // Update Stats
