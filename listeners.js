@@ -51,6 +51,12 @@ document.querySelector("#lobby").addEventListener("click", function(e) {
   gameUI.setState("gameList")
 })
 
+document.querySelector("#finishedLobby").addEventListener("click", function(e) {
+  localStorage.removeItem("dominion_gameId")
+  server.getGameList()
+  gameUI.setState("gameList")
+})
+
 document.getElementById("compose").addEventListener("keydown", function(e) {
   if(e.keyCode == 13) {
     server.sendChat( document.querySelector("#compose input").value )

@@ -43,6 +43,16 @@ var GameDOM = function() {
   }
 
   this.updateBoard = function() {
+    if(game.gameState.state == "finished") {
+      this.setState("finished")
+      game.gameState.scores.forEach(function(player) {
+        var result = document.createElement("div")
+        result.innerHTML = "<span class='name'>" + player.name + "</span>"
+        result.innerHTML += "<span class='score'>" + player.score + "</span>"
+        document.getElementById("gamePlayers").appendChild(result)
+      })
+    }
+
     document.getElementById("game").className = game.gameState.state
 
     var currentPlayer = game.gameState.players.find(a => a.playerUid == game.gameState.currentPlayerId)

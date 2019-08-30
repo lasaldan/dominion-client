@@ -47,6 +47,23 @@ input {
 
 #gameList {
 }
+#gamePlayers div {
+  display: flex;
+  justify-content: space-between;
+}
+#gamePlayers div > span:first-child {
+  font-size: 30px;
+  line-height: 50px;
+}
+#gamePlayers div > span:nth-child(2) {
+  font-size: 30px;
+  line-height: 50px;
+  padding-right: 50px;
+  background-image: url("images/victory.png");
+  background-size: contain;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
 
 body > div, body #game, #game #market {
   display: none
@@ -68,7 +85,7 @@ body > div.card {
   text-align: center;
   cursor: pointer;
 }
-.login #login, .gameList #gameList, .addNewGame #addNewGame, .game #game {
+.login #login, .gameList #gameList, .addNewGame #addNewGame, .game #game, .finished #finished {
   display: block;
 }
 #games > div, #gameHeaders > div {
